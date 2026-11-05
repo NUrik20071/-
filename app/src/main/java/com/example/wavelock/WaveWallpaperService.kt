@@ -13,10 +13,11 @@ import android.os.Looper
 import kotlin.math.sin
 
 class WaveWallpaperService : WallpaperService() {
+    private data class Ripple(val x: Float, val y: Float, val startedAt: Long)
+
     override fun onCreateEngine(): Engine = WaveEngine()
 
     private inner class WaveEngine : Engine() {
-        private data class Ripple(val x: Float, val y: Float, val startedAt: Long)
         private val ripples = mutableListOf<Ripple>()
         private val handler = Handler(Looper.getMainLooper())
         private var visible = false
